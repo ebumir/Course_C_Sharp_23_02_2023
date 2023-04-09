@@ -23,6 +23,24 @@ int[,] EigthMass(int row, int columns, int from, int to)
     }
     return arr;
 }
+int[] Frequency(int[,]arr, int maxvalue)
+{
+    int[] dict = new int [maxvalue +1];
+    foreach (var item in arr)
+    {
+        dict[item]+=1;
+    }
+    return dict;
+}
+string PrintFrequency(int[] arrey)
+{
+    string res=string.Empty;
+    for (int i = 0; i < arrey.Length; i++)
+    {
+        res+= $"element {i} encountered: {arrey[i]};  ";
+    }
+    return res;
+}
 
 Console.WriteLine("enter the number of rows:");
 int  RowQuantity= int.Parse(Console.ReadLine()!);
@@ -35,3 +53,6 @@ int max = int.Parse(Console.ReadLine()!);
 
 int[,] mass= EigthMass(RowQuantity, ColumnsQuantity, min, max);
 LengthMass(mass);
+int[] newmass= Frequency(mass, max);
+string result = PrintFrequency(newmass);
+System.Console.WriteLine(result);

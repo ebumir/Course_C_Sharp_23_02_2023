@@ -1,11 +1,9 @@
 ﻿void LengthMass(int[,] arr)
 {
-    int row = arr.GetLength(0);
-    int columns = arr.GetLength(1);
     Console.WriteLine();
-    for (int i=0; i< row; i++)
+    for (int i=0; i< arr.GetLength(0); i++)
     {
-        for (int j = 0; j < columns; j++)
+        for (int j = 0; j < arr.GetLength(1); j++)
             Console.Write($"{arr[i,j]} ");
     Console.WriteLine();
     }
@@ -24,6 +22,25 @@ int[,] EigthMass(int row, int columns, int from, int to)
     return arr;
 }
 
+int[] SumNumsRow (int[,] arr)
+{
+    int[] sum = new int[arr.GetLength(0)];
+    for (int i = 0; i < arr.GetLength(0); i++)
+        for (int j = 0; j < arr.GetLength(1); j++)
+           sum[i]+=arr[i,j];
+    return sum;
+}
+int MinSum(int[] sum)
+{
+    System.Console.WriteLine();
+    int min = 0;
+    for (int i = 1; i < sum.Length; i++)
+        if (sum[i]<sum[min])
+            min = i;
+    return min;
+}
+
+
 Console.WriteLine("enter the number of rows:");
 int  RowQuantity= int.Parse(Console.ReadLine()!);
 Console.WriteLine("enter the number of columns:");
@@ -35,3 +52,6 @@ int max = int.Parse(Console.ReadLine()!);
 
 int[,] mass= EigthMass(RowQuantity, ColumnsQuantity, min, max);
 LengthMass(mass);
+int[] newmassive = SumNumsRow(mass);
+int res = MinSum(newmassive);
+System.Console.WriteLine($"Min sums of element in {res+1} string");

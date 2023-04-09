@@ -1,11 +1,9 @@
 ﻿void LengthMass(int[,] arr)
 {
-    int row = arr.GetLength(0);
-    int columns = arr.GetLength(1);
     Console.WriteLine();
-    for (int i=0; i< row; i++)
+    for (int i=0; i< arr.GetLength(0); i++)
     {
-        for (int j = 0; j < columns; j++)
+        for (int j = 0; j < arr.GetLength(1); j++)
             Console.Write($"{arr[i,j]} ");
     Console.WriteLine();
     }
@@ -23,6 +21,18 @@ int[,] EigthMass(int row, int columns, int from, int to)
     }
     return arr;
 }
+void Reposition(int[,] arr)
+{
+    System.Console.WriteLine();
+    int row = arr.GetLength(0);
+    int columns = arr.GetLength(1);
+    for (int j = 0; j < columns; j++)
+        (arr[0,j], arr[row-1,j]) = (arr[row-1,j], arr[0,j]);
+
+        
+        
+    
+}
 
 Console.WriteLine("enter the number of rows:");
 int  RowQuantity= int.Parse(Console.ReadLine()!);
@@ -34,4 +44,6 @@ Console.WriteLine("Enter the max value of the array element:");
 int max = int.Parse(Console.ReadLine()!);
 
 int[,] mass= EigthMass(RowQuantity, ColumnsQuantity, min, max);
+LengthMass(mass);
+Reposition(mass);
 LengthMass(mass);
